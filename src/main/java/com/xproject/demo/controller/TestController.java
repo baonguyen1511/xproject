@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author bao.nguyentx
  *
  */
-@CrossOrigin(origins = "${xproject.app.crossURL}", maxAge = 3600)
+@CrossOrigin(origins = "${xproject.app.xURL}", maxAge = 3600)
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
