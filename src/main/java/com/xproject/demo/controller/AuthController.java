@@ -39,7 +39,7 @@ import com.xproject.demo.security.services.UserDetailsImpl;
  * @author bao.nguyentx
  *
  */
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "${xproject.app.crossURL}", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

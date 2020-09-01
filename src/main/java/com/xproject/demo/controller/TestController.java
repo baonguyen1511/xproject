@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author bao.nguyentx
  *
  */
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "${xproject.app.crossURL}", maxAge = 3600)
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
@@ -29,7 +29,7 @@ public class TestController {
     }
 
     @GetMapping("/mod")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('MODERATOR')")
     public String moderatorAccess() {
         return "Moderator Board.";
     }
