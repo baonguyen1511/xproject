@@ -49,7 +49,7 @@ class App extends Component {
         <div>
           <nav className="navbar navbar-expand navbar-dark bg-dark">
             <Link to={"/"} className="navbar-brand">
-              bezKoder
+              XProject
             </Link>
             <div className="navbar-nav mr-auto">
               <li className="nav-item">
@@ -61,7 +61,7 @@ class App extends Component {
               {showModeratorBoard && (
                 <li className="nav-item">
                   <Link to={"/mod"} className="nav-link">
-                    Moderator Board
+                    Moderator
                   </Link>
                 </li>
               )}
@@ -69,7 +69,7 @@ class App extends Component {
               {showAdminBoard && (
                 <li className="nav-item">
                   <Link to={"/admin"} className="nav-link">
-                    Admin Board
+                    Admin
                   </Link>
                 </li>
               )}
@@ -92,7 +92,7 @@ class App extends Component {
                 </li>
                 <li className="nav-item">
                   <a href="/login" className="nav-link" onClick={this.logOut}>
-                    LogOut
+                    Logout
                   </a>
                 </li>
               </div>
@@ -106,7 +106,7 @@ class App extends Component {
 
                 <li className="nav-item">
                   <Link to={"/register"} className="nav-link">
-                    Sign Up
+                    Signup
                   </Link>
                 </li>
               </div>
