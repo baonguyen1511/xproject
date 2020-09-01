@@ -12,6 +12,9 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
+import AddTutorial from "./components/add-tutorial.component";
+import Tutorial from "./components/tutorial.component";
+import TutorialsList from "./components/tutorial-list.component";
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +60,16 @@ class App extends Component {
                   Home
                 </Link>
               </li>
-
+              <li className="nav-item">
+                <Link to={"/tutorials"} className="nav-link">
+                  Tutorials
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/add"} className="nav-link">
+                  Add
+                </Link>
+              </li>
               {showModeratorBoard && (
                 <li className="nav-item">
                   <Link to={"/mod"} className="nav-link">
@@ -65,7 +77,6 @@ class App extends Component {
                   </Link>
                 </li>
               )}
-
               {showAdminBoard && (
                 <li className="nav-item">
                   <Link to={"/admin"} className="nav-link">
@@ -122,6 +133,13 @@ class App extends Component {
               <Route path="/user" component={BoardUser} />
               <Route path="/mod" component={BoardModerator} />
               <Route path="/admin" component={BoardAdmin} />
+              <Route
+                exact
+                path={["/", "/tutorials"]}
+                component={TutorialsList}
+              />
+              <Route exact path="/add" component={AddTutorial} />
+              <Route path="/tutorials/:id" component={Tutorial} />
             </Switch>
           </div>
         </div>
