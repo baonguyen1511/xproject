@@ -3,6 +3,7 @@
  */
 package com.xproject.demo.models;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,9 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  * @author bao.nguyentx
@@ -49,6 +53,14 @@ public class User {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+    
+    @CreationTimestamp
+    @NotBlank
+    private Timestamp created_on;
+    
+    @UpdateTimestamp
+    @NotBlank
+    private Timestamp updated_on;
 
     public User() {
     }
@@ -97,5 +109,21 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Timestamp getCreated_on() {
+        return created_on;
+    }
+
+    public void setCreated_on(Timestamp created_on) {
+        this.created_on = created_on;
+    }
+
+    public Timestamp getUpdated_on() {
+        return updated_on;
+    }
+
+    public void setUpdated_on(Timestamp updated_on) {
+        this.updated_on = updated_on;
     }
 }

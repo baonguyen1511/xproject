@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin(origins = "${xproject.app.xURL}", maxAge = 3600)
 @RestController
-@RequestMapping("/api/test")
-public class TestController {
+@RequestMapping("/api/rbaa")
+public class RbaaController {
     @GetMapping("/all")
     public String allAccess() {
         return "Public Content.";

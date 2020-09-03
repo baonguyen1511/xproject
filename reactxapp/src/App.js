@@ -50,9 +50,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <nav className="navbar navbar-expand navbar-light bg-light">
             <Link to={"/"} className="navbar-brand">
-              XProject
+              X-Project
             </Link>
             <div className="navbar-nav mr-auto">
               <li className="nav-item">

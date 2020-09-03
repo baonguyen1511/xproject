@@ -4,6 +4,7 @@
 package com.xproject.demo.payload.request;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * @author bao.nguyentx
@@ -11,9 +12,11 @@ import javax.validation.constraints.NotBlank;
  */
 public class LoginRequest {
     @NotBlank
+    @Size(min = 3, max = 20)
     private String username;
 
     @NotBlank
+    @Size(min = 6, max = 40)
     private String password;
 
     public String getUsername() {
