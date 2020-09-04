@@ -29,7 +29,7 @@ export default class BoardAdmin extends Component {
         });
       }
     );
-    }
+  }
 
   render() {
     return (
@@ -37,7 +37,9 @@ export default class BoardAdmin extends Component {
         <header className="jumbotron">
           <h3>{this.state.content}</h3>
         </header>
-        <UserList></UserList>
+        <div>
+          <UserList></UserList>
+        </div>
       </div>
     );
   }

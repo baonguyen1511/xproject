@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xproject.demo.models.ERole;
 import com.xproject.demo.models.Role;
 import com.xproject.demo.models.User;
-import com.xproject.demo.payload.request.SignupRequest;
 import com.xproject.demo.payload.request.UpdateRequest;
-import com.xproject.demo.payload.response.MessageResponse;
 import com.xproject.demo.repository.RoleRepository;
 import com.xproject.demo.repository.UserRepository;
 

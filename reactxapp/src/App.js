@@ -34,9 +34,7 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
-        showModeratorBoard:
-          user.roles.includes("ROLE_ADMIN") ||
-          user.roles.includes("ROLE_MODERATOR"),
+        showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
@@ -52,9 +50,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <nav className="navbar navbar-expand navbar-light bg-light">
+          <nav className="navbar navbar-expand navbar-light bg-light text-monospace">
             <Link to={"/"} className="navbar-brand">
-              X-Project
+              Project
             </Link>
             <div className="navbar-nav mr-auto">
               <li className="nav-item">
@@ -62,17 +60,25 @@ class App extends Component {
                   Home
                 </Link>
               </li>
-              {currentUser && (
+              {/* {currentUser && (
                 <li className="nav-item">
                   <Link to={"/tutorials"} className="nav-link">
                     Tutorials
                   </Link>
                 </li>
               )}
-              {showModeratorBoard && (
+              {currentUser && (
                 <li className="nav-item">
                   <Link to={"/add"} className="nav-link">
                     Add
+                  </Link>
+                </li>
+              )} */}
+
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/user"} className="nav-link">
+                    User
                   </Link>
                 </li>
               )}
@@ -87,14 +93,6 @@ class App extends Component {
                 <li className="nav-item">
                   <Link to={"/admin"} className="nav-link">
                     Admin
-                  </Link>
-                </li>
-              )}
-
-              {currentUser && (
-                <li className="nav-item">
-                  <Link to={"/user"} className="nav-link">
-                    User
                   </Link>
                 </li>
               )}
@@ -130,7 +128,7 @@ class App extends Component {
             )}
           </nav>
 
-          <div className="container mt-3">
+          <div className="container mt-3 text-monospace">
             <Switch>
               <Route exact path={["/", "/home"]} component={Home} />
               <Route exact path="/login" component={Login} />
