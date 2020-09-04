@@ -18,6 +18,12 @@ class UserService {
   getAdminBoard() {
     return http.get(API_URL + "admin");
   }
+  getUsers(){
+    return http.get(API_URL + `users`);
+  }
+  deleteUser(id){
+    return http.delete(API_URL + `users/${id}`);
+  };
 }
 
 export default new UserService();

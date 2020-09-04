@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import UserList from "./user-list.component";
 import UserService from "../services/user.service";
 
 export default class BoardAdmin extends Component {
@@ -29,7 +29,7 @@ export default class BoardAdmin extends Component {
         });
       }
     );
-  }
+    }
 
   render() {
     return (
@@ -37,6 +37,7 @@ export default class BoardAdmin extends Component {
         <header className="jumbotron">
           <h3>{this.state.content}</h3>
         </header>
+        <UserList></UserList>
       </div>
     );
   }
