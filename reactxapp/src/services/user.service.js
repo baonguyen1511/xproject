@@ -1,23 +1,22 @@
-import axios from "axios";
-import authHeader from "./auth-header";
+import http from "../http-common";
 
 const API_URL = "http://localhost:8080/api/rbaa/";
 
 class UserService {
   getPublicContent() {
-    return axios.get(API_URL + "all");
+    return http.get(API_URL + "all");
   }
 
   getUserBoard() {
-    return axios.get(API_URL + "user", { headers: authHeader() });
+    return http.get(API_URL + "user");
   }
 
   getModeratorBoard() {
-    return axios.get(API_URL + "mod", { headers: authHeader() });
+    return http.get(API_URL + "mod");
   }
 
   getAdminBoard() {
-    return axios.get(API_URL + "admin", { headers: authHeader() });
+    return http.get(API_URL + "admin");
   }
 }
 
