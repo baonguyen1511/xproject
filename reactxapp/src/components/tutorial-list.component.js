@@ -141,7 +141,6 @@ const TutorialsList = () => {
         ) : (
           <div>
             <br />
-            <p>Please click on a Tutorial...</p>
           </div>
         )}
       </div>

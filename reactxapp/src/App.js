@@ -34,7 +34,9 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
-        showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
+        showModeratorBoard:
+          user.roles.includes("ROLE_ADMIN") ||
+          user.roles.includes("ROLE_MODERATOR"),
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
@@ -60,16 +62,20 @@ class App extends Component {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to={"/tutorials"} className="nav-link">
-                  Tutorials
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to={"/add"} className="nav-link">
-                  Add
-                </Link>
-              </li>
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/tutorials"} className="nav-link">
+                    Tutorials
+                  </Link>
+                </li>
+              )}
+              {showModeratorBoard && (
+                <li className="nav-item">
+                  <Link to={"/add"} className="nav-link">
+                    Add
+                  </Link>
+                </li>
+              )}
               {showModeratorBoard && (
                 <li className="nav-item">
                   <Link to={"/mod"} className="nav-link">

@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +31,14 @@ import com.xproject.demo.repository.TutorialRepository;
  */
 @CrossOrigin(origins = "${xproject.app.xURL}", maxAge = 3600)
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/rbaa")
 public class TutorialController {
 
     @Autowired
     TutorialRepository tutorialRepository;
 
     @GetMapping("/tutorials")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<List<Tutorial>> getAllTutorials(
             @RequestParam(required = false) String title) {
         try {
@@ -59,6 +61,7 @@ public class TutorialController {
     }
 
     @GetMapping("/tutorials/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<Tutorial> getTutorialById(
             @PathVariable("id") long id) {
         Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
@@ -71,6 +74,7 @@ public class TutorialController {
     }
 
     @PostMapping("/tutorials")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<Tutorial> createTutorial(
             @RequestBody Tutorial tutorial) {
         try {
@@ -83,6 +87,7 @@ public class TutorialController {
     }
 
     @PutMapping("/tutorials/{id}")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<Tutorial> updateTutorial(@PathVariable("id") long id,
             @RequestBody Tutorial tutorial) {
         Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
@@ -100,6 +105,7 @@ public class TutorialController {
     }
 
     @DeleteMapping("/tutorials/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<HttpStatus> deleteTutorial(
             @PathVariable("id") long id) {
         try {
@@ -111,6 +117,7 @@ public class TutorialController {
     }
 
     @DeleteMapping("/tutorials")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<HttpStatus> deleteAllTutorials() {
         try {
             tutorialRepository.deleteAll();
@@ -122,6 +129,7 @@ public class TutorialController {
     }
 
     @GetMapping("/tutorials/published")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<List<Tutorial>> findByPublished() {
         try {
             List<Tutorial> tutorials = tutorialRepository.findByPublished(true);
